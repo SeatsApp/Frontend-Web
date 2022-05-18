@@ -1,0 +1,36 @@
+name: Build
+on: [ push ]
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          # Need to set fetch depth to 0 for incremental diffs to grab the target branch
+          fetch-depth: '0'
+      - name: Run ESLint
+        uses: synergy-au/eslint-action@v1
+        with:
+          rules-path: './.eslintrc.json'
+          setup-from-package-json: 'true'
+
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Install dependencies
+        run:  npm install
+      - name: Install Jest globally
+        run:  sudo npm install -g jest
+      - name: Run Tests
+        run:  npm run test
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
