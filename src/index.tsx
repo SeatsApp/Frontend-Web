@@ -3,13 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {LoginContainer} from "./login/components/LoginContainer";
+import HomePage from "./HomePage";
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <LoginContainer>
+              <App />
+          </LoginContainer>
+      </BrowserRouter>
   </React.StrictMode>
 );
 
