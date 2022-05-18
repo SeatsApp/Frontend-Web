@@ -1,8 +1,20 @@
 import React, {useEffect} from "react"
 import useLogin from "../hooks/useLogin";
-import {Box, Typography} from "@mui/material";
+import {
+    Avatar,
+    Box,
+    Button,
+    Checkbox, createTheme,
+    CssBaseline,
+    FormControlLabel,
+    Grid,
+    Paper,
+    TextField, ThemeProvider,
+    Typography
+} from "@mui/material";
 import {OpenURLButton} from "./OpenUrlButton";
 import {backendUrl} from "../../config/EnvironmentConfig";
+import {Link} from "react-router-dom";
 
 interface LoginContainerProps {
     children: JSX.Element;
@@ -28,16 +40,39 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
         checkLoggedIn();
     }, []);
 
+    const theme = createTheme();
+
     const loginUrl = backendUrl + "/api/login/web";
     if (loggedIn) {
         return children
     } else {
         return (
-            <Box style={{display: 'flex', flexDirection: 'column' ,alignItems: 'center', justifyContent: 'center', position: 'relative', height: '50%'}}>
-                <Typography style={{margin: 20, fontSize: 20, textAlign: 'center'}}>You have to login with your cronos
-                    account.</Typography>
-                <OpenURLButton url={loginUrl}/>
-            </Box>
+            <ThemeProvider theme={theme}>
+                <Grid container component="main" sx={{ height: '100vh' }}>
+                    <CssBaseline />
+                    <Grid
+                        item
+                        xs={false}
+                        sm={4}
+                        md={7}
+                        sx={{
+                            backgroundImage: 'url(https://source.unsplash.com/random)',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundColor: (t) =>
+                                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                    />
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                        <Box style={{display: 'flex', flexDirection: 'column' ,alignItems: 'center', justifyContent: 'center', position: 'relative', height: '50%'}}>
+                            <Typography style={{margin: 20, fontSize: 20, textAlign: 'center'}}>You have to login with your cronos
+                                account.</Typography>
+                            <OpenURLButton url={loginUrl}/>
+                        </Box>
+                    </Grid>
+                </Grid>
+            </ThemeProvider>
         )
     }
 }
