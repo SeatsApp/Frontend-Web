@@ -15,17 +15,23 @@
     "@types/react-dom": "^18.0.4",
     "axios": "^0.27.2",
     "eslint": "^8.15.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.0",
+    "jest-localstorage-mock": "^2.4.21",
+    "jest-sonar-reporter": "^2.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.1.0",
+    "ts-jest": "^28.0.2",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest -u --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,5 +51,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-test-renderer": "^18.0.0",
+    "jest-environment-jsdom": "^28.1.0"
   }
 }

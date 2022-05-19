@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\jarim\Documents\Xplore\frontend-web\src\__tests__\App.test.tsx">
+    <testCase name="renders learn react link" duration="45"/>
+  </file>
+  <file path="C:\Users\jarim\Documents\Xplore\frontend-web\src\__tests__\LoginContainerTests.tsx">
+    <testCase name="renders not logged in correctly" duration="99"/>
+    <testCase name="renders logged in correctly" duration="36"/>
+    <testCase name="should call api with correct parameters" duration="2"/>
+    <testCase name="should call api with wrong parameters" duration="1"/>
+  </file>
+  <file path="C:\Users\jarim\Documents\Xplore\frontend-web\src\__tests__\OpenUrlButtonTests.tsx">
+    <testCase name="renders correctly" duration="55"/>
+    <testCase name="Test web button press" duration="58"/>
+  </file>
+</testExecutions>

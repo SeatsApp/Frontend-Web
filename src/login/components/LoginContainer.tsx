@@ -1,27 +1,17 @@
 import React, {useEffect} from "react"
 import useLogin from "../hooks/useLogin";
 import {
-    Avatar,
-    Box,
-    Button,
-    Checkbox, createTheme,
+    Box, createTheme,
     CssBaseline,
-    FormControlLabel,
     Grid,
-    Paper,
-    TextField, ThemeProvider,
+    Paper, ThemeProvider,
     Typography
 } from "@mui/material";
 import {OpenURLButton} from "./OpenUrlButton";
 import {backendUrl} from "../../config/EnvironmentConfig";
-import {Link} from "react-router-dom";
 
 interface LoginContainerProps {
     children: JSX.Element;
-}
-
-interface LinkingProps {
-    url: string;
 }
 
 export const LoginContainer = ({children}: LoginContainerProps) => {

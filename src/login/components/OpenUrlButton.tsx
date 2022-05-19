@@ -8,7 +8,7 @@ interface OpenUrlButtonProps {
 export const OpenURLButton = ({url}: OpenUrlButtonProps) => {
 
     const handlePress = useCallback(async () => {
-        await window.location.assign(url);
+        window.location.assign(url);
     }, [url]);
 
     return <Button color={"primary"} variant='contained'
