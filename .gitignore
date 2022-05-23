@@ -9,6 +9,7 @@
 coverage/
 /src/__tests__/__snapshots__
 test-report.xml
+
 # production
 /build
 

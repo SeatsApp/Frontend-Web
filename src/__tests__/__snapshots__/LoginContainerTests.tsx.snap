@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders logged in correctly 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+>
+  Test
+</p>
+`;
+
+exports[`renders not logged in correctly 1`] = `
+<main
+  className="MuiGrid-root MuiGrid-container css-1jrn2fe-MuiGrid-root"
+>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-7 css-bxq4xw-MuiGrid-root"
+  />
+  <div
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation6 MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-5 css-gadse4-MuiPaper-root-MuiGrid-root"
+  >
+    <div
+      className="MuiBox-root css-0"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "50%",
+          "justifyContent": "center",
+          "position": "relative",
+        }
+      }
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+        style={
+          Object {
+            "fontSize": 20,
+            "margin": 20,
+            "textAlign": "center",
+          }
+        }
+      >
+        You have to login with your cronos account.
+      </p>
+      <button
+        className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+        >
+          Login
+        </p>
+      </button>
+    </div>
+  </div>
+</main>
+`;
