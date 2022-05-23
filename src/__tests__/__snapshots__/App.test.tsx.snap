@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`renders learn react link 1`] = `
-<p
-  className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
->
-  Hallo
-</p>
-`;
