@@ -5,7 +5,7 @@ export default function useLogin() {
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
     function checkLoggedIn() {
-        return AxiosClient.get("/api/healthcheck")
+        return AxiosClient.get("/api/admin/healthcheck")
             .then((response) => {
                 if (response.status >= 300)
                     setLoggedIn(false)

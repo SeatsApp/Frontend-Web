@@ -32,7 +32,7 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
 
     const theme = createTheme();
 
-    const loginUrl = backendUrl + "/api/login/web";
+    const loginUrl = backendUrl + "/api/admin/login";
     if (loggedIn) {
         return children
     } else {
