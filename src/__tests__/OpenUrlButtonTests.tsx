@@ -22,7 +22,7 @@ test("Test web button press", async () => {
 
     const screen = render(<OpenURLButton url="https://google.be" />);
 
-    fireEvent.click(screen.getByText("Login"));
+    fireEvent.click(screen.getByText("Connect with your Cronos account."));
 
     await waitFor(() => {
         expect(window.location.assign).toBeCalled();
