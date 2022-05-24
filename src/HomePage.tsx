@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Typography} from "@mui/material";
+import Dashboard from "./dashboard/components/Dashboard";
+import 'react-toastify/dist/ReactToastify.css';
 
 function HomePage() {
     return (
-        <Typography>Hallo</Typography>
+        <Dashboard/>
     );
 }
 

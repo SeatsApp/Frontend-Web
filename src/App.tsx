@@ -1,15 +1,19 @@
-import React from 'react';
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
+import Header from "./appbar/Header";
+import { Box, Container } from "@mui/material";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomePage/>}/>
-            </Routes>
-        </ BrowserRouter>
+        <Box>
+            <Header />
+            <Container style={{ marginTop: '80px' }} maxWidth='xl'>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                </Routes>
+            </Container>
+        </Box>
     );
 }
 
