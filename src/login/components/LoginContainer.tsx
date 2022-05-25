@@ -4,11 +4,12 @@ import {
     Box, createTheme,
     CssBaseline,
     Grid,
-    Paper, ThemeProvider,
-    Typography
+    ThemeProvider,
 } from "@mui/material";
 import {OpenURLButton} from "./OpenUrlButton";
 import {backendUrl} from "../../config/EnvironmentConfig";
+import CronosLogin from "../../assets/cronosLogin.jpg";
+import CronosBackground from "../../assets/cronosBackGround.png";
 
 interface LoginContainerProps {
     children: JSX.Element;
@@ -38,15 +39,15 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
     } else {
         return (
             <ThemeProvider theme={theme}>
-                <Grid container component="main" sx={{ height: '100vh' }}>
-                    <CssBaseline />
+                <Grid container component="main" sx={{height: '100vh'}}>
+                    <CssBaseline/>
                     <Grid
                         item
                         xs={false}
                         sm={4}
                         md={7}
                         sx={{
-                            backgroundImage: 'url(https://source.unsplash.com/random)',
+                            backgroundImage: `url(${CronosLogin})`,
                             backgroundRepeat: 'no-repeat',
                             backgroundColor: (t) =>
                                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -54,11 +55,20 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
                             backgroundPosition: 'center',
                         }}
                     />
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                        <Box style={{display: 'flex', flexDirection: 'column' ,alignItems: 'center', justifyContent: 'center', position: 'relative', height: '50%'}}>
-                            <Typography style={{margin: 20, fontSize: 20, textAlign: 'center'}}>You have to login with your cronos
-                                account.</Typography>
-                            <OpenURLButton url={loginUrl}/>
+                    <Grid item xs={12} sm={8} md={5} component={Box} sx={{
+                        backgroundImage: `url(${CronosBackground})`,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        display: 'flex',
+                        flexWrap: 'nowrap',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <Box sx={{height: '50%', display: 'flex', alignItems: 'center'}}>
+                            <Box>
+                                <OpenURLButton url={loginUrl}/>
+                            </Box>
                         </Box>
                     </Grid>
                 </Grid>
