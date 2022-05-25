@@ -10,7 +10,7 @@ interface OveralInfoProps {
 
 function OveralInfo({seats}: OveralInfoProps) {
     return (
-        <Box style={{ paddingTop: 20, display: "flex", flexDirection: 'row', justifyContent:'space-around' }}>
+        <Box style={{ paddingTop: 10, display: "flex", flexDirection: 'row', justifyContent:'space-around' }}>
             <TotalReservations seats={seats}/>
             <FreeSeats seats={seats}/>
             <CheckedInSeats seats={seats}/>

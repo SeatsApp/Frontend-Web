@@ -21,6 +21,31 @@ test("renders not logged in correctly", () => {
     expect(tree).toMatchSnapshot();
 });
 
+test("get jwt token from url correctly", () => {
+    const useStateSpy = jest.spyOn(React, 'useState');
+    useStateSpy.mockImplementation(() => [false, jest.fn()])
+
+    // @ts-ignore
+    delete window.location
+    // @ts-ignore
+    Object.defineProperty(window, 'location', {
+        value: {
+            href: "https://testurl?=#1234"
+        }
+    });
+
+    mockedAxios.get.mockResolvedValue({
+        status: 200
+    });
+
+    const tree = renderer.create(<LoginContainer>
+        <Typography>Test</Typography>
+    </LoginContainer>).toJSON();
+
+    expect(tree).toMatchSnapshot();
+    expect(localStorage.getItem("JwtToken")).toEqual("#123");
+});
+
 test("renders logged in correctly", () => {
     const setState = jest.fn();
     const useStateSpy = jest.spyOn(React, 'useState');

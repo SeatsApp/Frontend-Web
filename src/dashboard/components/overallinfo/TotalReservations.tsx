@@ -24,14 +24,14 @@ export default function TotalReservations({ seats }: TotalReservationProps) {
                 <Grid container spacing={3} sx={{ justifyContent: 'space-between' }}>
                     <Grid item>
                         <Typography
-                            color="textSecondary"
+                            color="primary"
                             gutterBottom
                             variant="overline"
                         >
                             TOTAL RESERVATIONS
                         </Typography>
                         <Typography
-                            color="textPrimary"
+                            color="primary"
                             variant="h4"
                         >
                             {totalReservations}

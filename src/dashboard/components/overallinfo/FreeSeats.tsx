@@ -28,14 +28,14 @@ export default function FreeSeats({ seats }: FreeSeatsProps) {
                 <Grid container spacing={3} sx={{ justifyContent: 'space-between' }}>
                     <Grid item>
                         <Typography
-                            color="textSecondary"
+                            color="primary"
                             gutterBottom
                             variant="overline"
                         >
                             FREE SEATS
                         </Typography>
                         <Typography
-                            color="textPrimary"
+                            color="primary"
                             variant="h4"
                         >
                             {freeSeats}
