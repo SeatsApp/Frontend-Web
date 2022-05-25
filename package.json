@@ -38,6 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://xplore-seatapp",
     "test": "jest -u --coverage",
     "eject": "react-scripts eject"
   },
