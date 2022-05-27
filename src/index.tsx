@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {LoginContainer} from "./login/components/LoginContainer";
 import {Box} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
-import {ToastContainer} from "react-toastify";
+import {Toaster} from "react-hot-toast";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -14,9 +14,9 @@ root.render(
     <React.StrictMode>
         <LoginContainer>
             <BrowserRouter>
-                <ToastContainer/>
                 <Box className='App'>
                     <App/>
+                    <Toaster/>
                 </Box>
             </BrowserRouter>
         </LoginContainer>

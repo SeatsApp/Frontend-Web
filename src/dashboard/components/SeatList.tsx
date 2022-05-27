@@ -1,6 +1,6 @@
 import {
     Box,
-    Button,
+    Button, FormControlLabel, FormGroup, Switch,
     Table,
     TableBody,
     TableCell,
@@ -13,31 +13,34 @@ import { Seat } from '../../shared/types/Seat';
 import { theme } from '../../theme';
 import SeatDetailsModal from "./SeatDetailsModal";
 import {useState} from "react";
+import useSeat from "../../shared/hooks/useSeats";
 
 interface SeatListProps {
-    seats: Seat[]
+    seats: Seat[];
+    filterByDate: () => void;
 }
 
-export default function SeatList({ seats }: SeatListProps) {
+export default function SeatList({seats, filterByDate}: SeatListProps) {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [clickedSeat, setClickedSeat] = useState<undefined | Seat>(undefined);
+    const { changeAvailability } = useSeat();
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ minWidth: 500 }}>
+            <Box sx={{minWidth: 500}}>
                 <Table>
                     <TableHead>
-                        <TableRow >
+                        <TableRow>
                             <TableCell align='center'>
                                 Seat name
-                            </TableCell >
+                            </TableCell>
                             <TableCell align='center'>
                                 Reservations
                             </TableCell>
                             <TableCell align='center'>
                                 Seat status
                             </TableCell>
-                            <TableCell align='center' />
+                            <TableCell align='center'/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -53,9 +56,9 @@ export default function SeatList({ seats }: SeatListProps) {
                                     {seat.reservations.length}
                                 </TableCell>
                                 <TableCell align='center'>
-                                    {seat.seatStatus === null ? <Typography>--</Typography> : seat.seatStatus}
+                                    {seat.seatStatus === null ? <Typography>No date selected.</Typography> : seat.seatStatus}
                                 </TableCell>
-                                <TableCell align='center'>
+                                <TableCell style={{display: 'flex', justifyContent: 'space-around'}}>
                                     <Button onClick={() => {
                                         setClickedSeat(seat);
                                         setModalOpen(true);
@@ -64,11 +67,13 @@ export default function SeatList({ seats }: SeatListProps) {
                                             Details
                                         </Typography>
                                     </Button>
-                                    <Button>
-                                        <Typography>
-                                            Delete
-                                        </Typography>
-                                    </Button>
+                                    <FormGroup>
+                                        <FormControlLabel onChange={async () => {
+                                            await changeAvailability(seat.id);
+                                            filterByDate();
+                                        }} control={<Switch checked={seat.available} />} label={!seat.available ? "Disabled" :
+                                            "Enabled"} />
+                                    </FormGroup>
                                 </TableCell>
                             </TableRow>
                         ))}
