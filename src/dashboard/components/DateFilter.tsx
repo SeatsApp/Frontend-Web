@@ -32,7 +32,9 @@ export default function DateFilter( { apiString, setApiString, refetchSeats }: D
                     setStartDate(value);
                 }} renderInput={(params) => <TextField id="date" {...params} />} />
             </LocalizationProvider>
-            <Button style={{marginLeft: 5}} variant="contained" onClick={filterByDate}><Typography>Apply filter</Typography></Button>
+            <Button color={'secondary'} style={{margin: 5}} variant="outlined" onClick={filterByDate}>
+                <Typography>Apply filter</Typography>
+            </Button>
         </Box>
     );
 }

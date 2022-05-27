@@ -1,19 +1,23 @@
-import './App.css';
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
+import {Routes, Route} from "react-router-dom";
 import Header from "./appbar/Header";
-import { Box, Container } from "@mui/material";
+import {Box, Container, CssBaseline, ThemeProvider} from "@mui/material";
+import {theme} from "./theme";
+import Dashboard from "./dashboard/components/Dashboard";
+import React from "react";
 
 function App() {
     return (
-        <Box>
-            <Header />
-            <Container style={{ marginTop: '80px' }} maxWidth='xl'>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                </Routes>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Container>
+                <Header/>
+                <Box style={{marginTop: '100px'}}>
+                    <Routes>
+                        <Route path="/" element={<Dashboard />}/>
+                    </Routes>
+                </Box>
             </Container>
-        </Box>
+        </ThemeProvider>
     );
 }
 

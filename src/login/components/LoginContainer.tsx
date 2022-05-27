@@ -19,16 +19,19 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
     const {loggedIn, checkLoggedIn} = useLogin();
 
     useEffect(() => {
-        const url = window.location.href;
-        if (url !== null) {
-            let jwtToken: string = url.split("=")[1]
-            if (jwtToken !== undefined) {
-                if (jwtToken.includes("#"))
-                    jwtToken = jwtToken.substring(0, jwtToken.length - 1)
-                localStorage.setItem("JwtToken", jwtToken)
+        if (!loggedIn) {
+            const url = window.location.href;
+            if (url !== null) {
+                let jwtToken: string = url.split("=")[1]
+                if (jwtToken !== undefined) {
+                    if (jwtToken.includes("#"))
+                        jwtToken = jwtToken.substring(0, jwtToken.length - 1);
+                    localStorage.setItem("JwtToken", jwtToken);
+                    window.location.href = window.location.href.split("?")[0];
+                }
             }
+            checkLoggedIn();
         }
-        checkLoggedIn();
     }, []);
 
     const theme = createTheme();
@@ -65,7 +68,7 @@ export const LoginContainer = ({children}: LoginContainerProps) => {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                        <Box sx={{height: '50%', display: 'flex', alignItems: 'center'}}>
+                        <Box sx={{height: '50%', display: 'flex', alignItems: 'flex-start', marginTop: 10}}>
                             <Box>
                                 <OpenURLButton url={loginUrl}/>
                             </Box>
