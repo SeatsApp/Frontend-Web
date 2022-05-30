@@ -1,10 +1,10 @@
 import React from "react";
-import {SeatStatus} from "../shared/types/SeatStatus";
+import { SeatStatus } from "../shared/types/SeatStatus";
 import TestRenderer from "react-test-renderer";
 import SeatList from "../dashboard/components/SeatList";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import AxiosClient from "../utils/AxiosClient";
-import {AxiosPromise} from "axios";
+import { AxiosPromise } from "axios";
 import mocked = jest.mocked;
 import useSeat from "../shared/hooks/useSeats";
 
@@ -12,8 +12,10 @@ test('renders learn react link', () => {
     const tree = TestRenderer.create(<SeatList seats={[{
         available: true,
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: []
-    }]}  filterByDate={() => null}/>).toJSON();
+        reservations: [],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
+    }]} filterByDate={() => null} />).toJSON();
     expect(tree).toMatchSnapshot();
 });
 
@@ -21,13 +23,15 @@ test('renders learn react link', () => {
     const tree = TestRenderer.create(<SeatList seats={[{
         available: false,
         id: 1, name: "test", seatStatus: null,
-        reservations: []
-    }]}  filterByDate={() => null}/>).toJSON();
+        reservations: [],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
+    }]} filterByDate={() => null} />).toJSON();
     expect(tree).toMatchSnapshot();
 });
 
-test('renders learn react link', () => {
-    const tree = TestRenderer.create(<SeatList seats={[]}  filterByDate={() => null}/>).toJSON();
+test('renders seat list', () => {
+    const tree = TestRenderer.create(<SeatList seats={[]} filterByDate={() => null} />).toJSON();
     expect(tree).toMatchSnapshot();
 });
 
@@ -39,8 +43,10 @@ test('button click', () => {
     const { getByText } = render(<SeatList seats={[{
         available: true,
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: []
-    }]}  filterByDate={() => null}/>)
+        reservations: [],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
+    }]} filterByDate={() => null} />)
 
     getByText('Details').click();
 
@@ -48,7 +54,7 @@ test('button click', () => {
 });
 
 jest.mock("../../src/utils/AxiosClient");
-const {changeAvailability} = useSeat();
+const { changeAvailability } = useSeat();
 
 test("Change availability calls right api", async () => {
     // mock to resolve a Promise<void>

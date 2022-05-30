@@ -1,9 +1,9 @@
 import React from 'react';
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import CheckedInSeats from "../dashboard/components/overallinfo/CheckedInSeats";
 import FreeSeats from "../dashboard/components/overallinfo/FreeSeats";
 import TotalReservations from "../dashboard/components/overallinfo/TotalReservations"
-import {SeatStatus} from "../shared/types/SeatStatus";
+import { SeatStatus } from "../shared/types/SeatStatus";
 
 
 test('checked in seats useEffect test with seats', () => {
@@ -14,7 +14,12 @@ test('checked in seats useEffect test with seats', () => {
     render(<CheckedInSeats seats={[{
         available: true,
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }]
+        reservations: [{
+            id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00",
+            checkedIn: true, user: { email: 'test', fullName: 'test', role: 'ADMIN' }
+        }],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
     }]} />);
 
     expect(mockedSetState).toHaveBeenCalledTimes(1);
@@ -39,7 +44,10 @@ test('free seats useEffect test with seats', () => {
 
     render(<FreeSeats seats={[{
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [] , available: true
+        reservations: [],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
+        , available: true
     }]} />);
 
     expect(mockedSetState).toHaveBeenCalledTimes(1);
@@ -64,7 +72,13 @@ test('totalRes useEffect test with seats and reservations', () => {
 
     render(<TotalReservations seats={[{
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }] , available: true
+        reservations: [{
+            id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00",
+            checkedIn: true, user: { email: 'test', fullName: 'test', role: 'ADMIN' }
+        }],
+        xcoordinates: 0, ycoordinates: 0,
+        width: 0, height: 0
+        , available: true
     }]} />);
 
     expect(mockedSetState).toHaveBeenCalledTimes(1);
