@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from "@testing-library/react";
-import {SeatStatus} from "../dashboard/types/SeatStatus";
+import {SeatStatus} from "../shared/types/SeatStatus";
 import CheckedInSeats from "../dashboard/components/overallinfo/CheckedInSeats";
 import FreeSeats from "../dashboard/components/overallinfo/FreeSeats";
 import TotalReservations from "../dashboard/components/overallinfo/TotalReservations"
@@ -13,7 +13,7 @@ test('checked in seats useEffect test with seats', () => {
 
     render(<CheckedInSeats seats={[{
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test'} }]
+        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }]
     }]} />);
 
     expect(mockedSetState).toHaveBeenCalledTimes(1);
@@ -63,7 +63,7 @@ test('totalRes useEffect test with seats and reservations', () => {
 
     render(<TotalReservations seats={[{
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test'} }]
+        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: true, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }]
     }]} />);
 
     expect(mockedSetState).toHaveBeenCalledTimes(1);

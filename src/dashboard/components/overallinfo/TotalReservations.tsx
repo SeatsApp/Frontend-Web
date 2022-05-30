@@ -1,6 +1,6 @@
 import { Avatar, Card, CardContent, Grid, Typography } from '@mui/material';
 import PeopleIcon from '@mui/icons-material/PeopleOutlined';
-import { Seat } from '../../types/Seat';
+import { Seat } from '../../../shared/types/Seat';
 import { useEffect, useState } from 'react';
 
 interface TotalReservationProps {

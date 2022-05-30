@@ -1,7 +1,7 @@
 import React from "react";
 import {render} from "@testing-library/react";
 import SeatDetailsModal from "../dashboard/components/SeatDetailsModal";
-import {SeatStatus} from "../dashboard/types/SeatStatus";
+import {SeatStatus} from "../shared/types/SeatStatus";
 
 test('getEvents', () => {
     const setOpenMocked = jest.fn();
@@ -11,7 +11,7 @@ test('getEvents', () => {
 
     const { getByRole } = render(<SeatDetailsModal  open={true}  seat={{
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
-        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: false, user: {email: 'test', fullName: 'test'} }]
+        reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: false, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }]
     }} setOpen={setOpenMocked}/>)
 
     getByRole('button').click();

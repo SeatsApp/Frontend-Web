@@ -1,5 +1,5 @@
 import React from "react";
-import {SeatStatus} from "../dashboard/types/SeatStatus";
+import {SeatStatus} from "../shared/types/SeatStatus";
 import TestRenderer from "react-test-renderer";
 import SeatList from "../dashboard/components/SeatList";
 import {render} from "@testing-library/react";

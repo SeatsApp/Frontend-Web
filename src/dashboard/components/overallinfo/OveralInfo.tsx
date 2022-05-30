@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import TotalReservations from './TotalReservations';
 import FreeSeats from './FreeSeats';
 import CheckedInSeats from './CheckedInSeats';
-import { Seat } from "../../types/Seat";
+import { Seat } from "../../../shared/types/Seat";
 
 interface OveralInfoProps {
     seats: Seat[]

@@ -1,6 +1,6 @@
 import {Box, IconButton, Modal, Paper} from "@mui/material";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
-import {Seat} from "../types/Seat";
+import {Seat} from "../../shared/types/Seat";
 import {DayPilot, DayPilotCalendar} from "daypilot-pro-react";
 import CloseIcon from '@mui/icons-material/Close';
 

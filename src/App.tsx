@@ -4,6 +4,7 @@ import {Box, Container, CssBaseline, ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import Dashboard from "./dashboard/components/Dashboard";
 import React from "react";
+import UserBoard from "./userboard/components/UserBoard";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Box style={{marginTop: '100px'}}>
                     <Routes>
                         <Route path="/" element={<Dashboard />}/>
+                        <Route path="/users" element={<UserBoard />}/>
                     </Routes>
                 </Box>
             </Container>

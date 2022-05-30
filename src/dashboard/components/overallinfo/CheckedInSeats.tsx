@@ -1,6 +1,6 @@
 import { Avatar, Card, CardContent, Grid, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
-import { Seat } from '../../types/Seat';
+import { Seat } from '../../../shared/types/Seat';
 import { useEffect, useState } from 'react';
 
 interface CheckedInProps {
