@@ -16,7 +16,6 @@ interface UserListProps {
 }
 
 export default function UserList({ users, changeRole }: UserListProps) {
-    console.log(users);
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ minWidth: 500 }}>

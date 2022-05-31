@@ -1,7 +1,7 @@
 import axiosClient from '../../utils/AxiosClient';
-import { toast } from 'react-toastify';
 import {User} from "../types/User";
 import useGet from "./useGet";
+import toast from "react-hot-toast";
 
 export default function useUsers() {
     async function changeRole(

@@ -10,6 +10,7 @@ test('getEvents', () => {
         .mockImplementationOnce(() => [[], mockedSetState]);
 
     const { getByRole } = render(<SeatDetailsModal  open={true}  seat={{
+        available: true,
         id: 1, name: "test", seatStatus: SeatStatus.AVAILABLE,
         reservations: [{ id: 1, startDateTime: "2022-04-22 15:00:00", endDateTime: "2022-04-22 16:00:00", checkedIn: false, user: {email: 'test', fullName: 'test', role: 'ADMIN'} }]
     }} setOpen={setOpenMocked}/>)
