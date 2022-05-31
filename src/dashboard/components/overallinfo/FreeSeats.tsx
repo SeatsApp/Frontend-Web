@@ -1,5 +1,5 @@
 import { Avatar, Card, CardContent, Grid, Typography } from '@mui/material';
-import { Seat } from '../../types/Seat';
+import { Seat } from '../../../shared/types/Seat';
 import { useEffect, useState } from 'react';
 import DesktopMacIcon from '@mui/icons-material/DesktopMac';
 

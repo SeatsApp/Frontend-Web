@@ -9,7 +9,7 @@ import {
     ThemeProvider,
     Typography
 } from '@mui/material';
-import { Seat } from '../types/Seat';
+import { Seat } from '../../shared/types/Seat';
 import { theme } from '../../theme';
 import SeatDetailsModal from "./SeatDetailsModal";
 import {useState} from "react";

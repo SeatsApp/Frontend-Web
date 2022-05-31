@@ -2,11 +2,11 @@ import {useCallback, useEffect, useState} from 'react';
 import axiosClient from '../../utils/AxiosClient';
 import {toast} from "react-toastify";
 
-export default function useGet<T>(url: string, initialValue: T) {
+export default function useGetFilter<T>(url: string, initialValue: T) {
     const [fetchedData, setFetchedData] = useState<T>(initialValue);
 
-    const fetchData = useCallback(async () => {
-        await axiosClient(url).then(
+    const fetchData = useCallback(async (getUrl: string) => {
+        await axiosClient(getUrl).then(
             (response) => {
                 if (response.data !== undefined)
                     setFetchedData(response.data);
@@ -20,9 +20,9 @@ export default function useGet<T>(url: string, initialValue: T) {
 
     useEffect(() => {
         (async () => {
-            await fetchData();
+            await fetchData(url);
         })();
-    }, [fetchData]);
+    }, [url, fetchData]);
 
     return {
         data: fetchedData,
