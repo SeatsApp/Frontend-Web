@@ -1,21 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
 import axiosClient from '../../utils/AxiosClient';
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 export default function useGet<T>(url: string, initialValue: T) {
-  const [fetchedData, setFetchedData] = useState<T>(initialValue);
+    const [fetchedData, setFetchedData] = useState<T>(initialValue);
+    const [loading, setIsLoading] = useState(false);
 
     const fetchData = useCallback(async () => {
+        setIsLoading(true);
         await axiosClient(url).then(
-            (response) => {
+            (response: any) => {
                 if (response.data !== undefined)
                     setFetchedData(response.data);
             }
         )
             .catch(() => {
-                /* istanbul ignore next */
-                toast.error("Could not get the seats.")
+                toast.error("Could not get the data.")
             });
+        setIsLoading(false);
     }, []);
 
     useEffect(() => {
@@ -26,10 +28,11 @@ export default function useGet<T>(url: string, initialValue: T) {
 
     useEffect(() => {
         //
-    },[url])
+    }, [url])
 
-  return {
-    data: fetchedData,
-    refetch: fetchData,
-  };
+    return {
+        data: fetchedData,
+        refetch: fetchData,
+        loading
+    };
 }

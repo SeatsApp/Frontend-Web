@@ -1,5 +1,5 @@
 import TestRenderer from 'react-test-renderer';
-import BuildingFloorPlan from '../../floorplan/components/BuildingFloorPlan';
+import BuildingFloorPlan from '../../shared/components/BuildingFloorPlan';
 import { SeatStatus } from '../../shared/types/SeatStatus';
 
 test("renders correctly", () => {

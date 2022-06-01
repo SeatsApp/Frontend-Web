@@ -1,5 +1,5 @@
 import useGet from "../../shared/hooks/useGet";
-import { Building } from "../types/Building";
+import { Building } from "../../shared/types/Building";
 
 export default function useReadBuildings() {
     // eslint-disable-next-line react-hooks/rules-of-hooks

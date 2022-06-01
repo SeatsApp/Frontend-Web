@@ -14,7 +14,7 @@ test("change textfield name", async () => {
         setYCoordinates={jest.fn()} setWidth={jest.fn()}
         setHeight={jest.fn()} />);
 
-    fireEvent.change(await view.findByLabelText("Name"), { target: { value: 'a' } });
+    fireEvent.change(view.getByLabelText("Name"), { target: { value: 'a' } });
 
     expect(mockedChange).toBeCalled()
 });
@@ -26,7 +26,7 @@ test("change textfield x coordinates", async () => {
         setYCoordinates={jest.fn()} setWidth={jest.fn()}
         setHeight={jest.fn()} />);
 
-    fireEvent.change(await view.findByLabelText("X coordinates (cm)"), { target: { value: 5 } });
+    fireEvent.change(view.getByLabelText("X coordinates"), { target: { value: 5 } });
 
     expect(mockedChange).toBeCalled()
 });
@@ -38,7 +38,7 @@ test("change textfield y coordinates", async () => {
         setYCoordinates={() => mockedChange()} setWidth={jest.fn()}
         setHeight={jest.fn()} />);
 
-    fireEvent.change(await view.findByLabelText("Y coordinates (cm)"), { target: { value: 5 } });
+    fireEvent.change(view.getByLabelText("Y coordinates"), { target: { value: 5 } });
 
     expect(mockedChange).toBeCalled()
 });
@@ -50,7 +50,7 @@ test("change textfield width", async () => {
         setYCoordinates={jest.fn()} setWidth={() => mockedChange()}
         setHeight={jest.fn()} />);
 
-    fireEvent.change(await view.findByLabelText("Width (cm)"), { target: { value: 5 } });
+    fireEvent.change(view.getByLabelText("Width"), { target: { value: 5 } });
 
     expect(mockedChange).toBeCalled()
 });
@@ -62,7 +62,7 @@ test("change textfield height", async () => {
         setYCoordinates={jest.fn()} setWidth={jest.fn()}
         setHeight={() => mockedChange()} />);
 
-    fireEvent.change(await view.findByLabelText("Height (cm)"), { target: { value: 5 } });
+    fireEvent.change(view.getByLabelText("Height"), { target: { value: 5 } });
 
     expect(mockedChange).toBeCalled()
 });

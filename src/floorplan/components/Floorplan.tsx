@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SeatStatus } from "../../shared/types/SeatStatus";
 import useSelectedBuilding from "../hooks/useSelectedBuilding";
-import BuildingFloorPlan from "./BuildingFloorPlan";
+import BuildingFloorPlan from "../../shared/components/BuildingFloorPlan";
 import CreateSeatButton from "./CreateSeatButton";
 import CreateSeatInputs from "./CreateSeatInputs";
 

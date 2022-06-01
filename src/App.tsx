@@ -7,6 +7,7 @@ import React from "react";
 import UserBoard from "./userboard/components/UserBoard";
 import { ManageBuildings } from "./buildings/components/ManageBuildings";
 import { Floorplan } from "./floorplan/components/Floorplan";
+import { CreateBuilding } from "./create_building/components/CreateBuilding";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/" element={<Dashboard />}/>
                         <Route path="/users" element={<UserBoard />}/>
                         <Route path="/manageBuildings" element={<ManageBuildings />} />
+                        <Route path="/buildings/:buildingId" element={<CreateBuilding />} />
                         <Route path="/buildings/:buildingId/floors/:floorId/floorplan" element={<Floorplan />} />
                     </Routes>
                 </Box>

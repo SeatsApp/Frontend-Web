@@ -17,7 +17,7 @@ test("Try create wrong seat", async () => {
     
     const view = render(<CreateSeatButton floorId={0} name={''} xCoordinates={0} yCoordinates={0} width={0} height={0} />);
 
-    fireEvent.click(await view.findByText("Save seat"));
+    fireEvent.click(view.getByText("Save seat"));
 
     expect(AxiosClient).toBeCalledTimes(0)
 });
@@ -27,7 +27,7 @@ test("Try create correct seat", async () => {
 
     const view = render(<CreateSeatButton floorId={0} name={'A'} xCoordinates={0} yCoordinates={0} width={15} height={15} />);
 
-    fireEvent.click(await view.findByText("Save seat"));
+    fireEvent.click(view.getByText("Save seat"));
 
     expect(AxiosClient).toBeCalledTimes(1)
 });
