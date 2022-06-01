@@ -11,6 +11,11 @@ beforeEach(() => {
     jest.spyOn(console, 'error').mockImplementation();
 });
 
+beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation();
+    jest.spyOn(console, 'error').mockImplementation();
+});
+
 test('renders dashboard', () => {
     const tree = TestRenderer.create(<Dashboard/>).toJSON();
     expect(tree).toMatchSnapshot();

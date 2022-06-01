@@ -7,7 +7,7 @@
 
 .idea/
 coverage/
-/src/__tests__/__snapshots__
+__snapshots__/
 test-report.xml
 
 # production

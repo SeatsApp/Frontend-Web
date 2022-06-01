@@ -5,6 +5,10 @@ export type Seat = {
     id: number,
     name: string,
     seatStatus: SeatStatus | null,
+    xcoordinates: number,
+    ycoordinates: number,
+    width: number,
+    height: number,
     reservations: Reservation[],
     available: boolean
 };

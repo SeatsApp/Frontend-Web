@@ -1,9 +1,9 @@
-import {useCallback, useEffect, useState} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axiosClient from '../../utils/AxiosClient';
 import {toast} from "react-hot-toast";
 
 export default function useGet<T>(url: string, initialValue: T) {
-    const [fetchedData, setFetchedData] = useState<T>(initialValue);
+  const [fetchedData, setFetchedData] = useState<T>(initialValue);
 
     const fetchData = useCallback(async () => {
         await axiosClient(url).then(
@@ -28,8 +28,8 @@ export default function useGet<T>(url: string, initialValue: T) {
         //
     },[url])
 
-    return {
-        data: fetchedData,
-        refetch: fetchData,
-    };
+  return {
+    data: fetchedData,
+    refetch: fetchData,
+  };
 }
