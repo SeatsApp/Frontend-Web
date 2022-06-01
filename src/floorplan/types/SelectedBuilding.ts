@@ -1,4 +1,4 @@
-import { Point } from "../../buildings/types/Point";
+import { Point } from "../../shared/types/Point";
 import { Seat } from "../../shared/types/Seat";
 
 export type SelectedBuilding = {

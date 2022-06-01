@@ -4,7 +4,7 @@ import { SelectedBuilding } from "../types/SelectedBuilding";
 export default function useSelectedBuilding(buildingId: string, floorId: string) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: building, refetch: refetchBuilding } = useGet<SelectedBuilding>(
-        `/api/buildings/${buildingId}?floorId=${floorId}`, {
+        `/api/buildings/${buildingId}/floors/${floorId}`, {
         buildingId: 0,
         buildingName: "",
         floorId: 0,

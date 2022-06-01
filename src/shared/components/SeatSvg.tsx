@@ -1,11 +1,11 @@
-import { Seat as SeatObject } from '../../shared/types/Seat';
+import { Seat as SeatObject } from '../types/Seat';
 
-interface SeatProps {
+interface SeatSvgProps {
     seat: SeatObject;
     created: boolean;
 }
 
-export default function Seat({ seat, created }: SeatProps) {
+export default function SeatSvg({ seat, created }: SeatSvgProps) {
     return (
         <g key={seat.id} name={seat.name}>
             <rect strokeWidth="1" stroke="#000" height={seat.height} width={seat.width}

@@ -20,13 +20,13 @@ export default function CreateSeatInputs({
             <TextField onChange={(event) => setName(event.target.value)}
                 label="Name" variant="outlined" />
             <TextField onChange={(event) => setXCoordinates(Number(event.target.value))}
-                label="X coordinates (cm)" variant="outlined" type="number" />
+                label="X coordinates" variant="outlined" type="number" />
             <TextField onChange={(event) => setYCoordinates(Number(event.target.value))}
-                label="Y coordinates (cm)" variant="outlined" type="number" />
+                label="Y coordinates" variant="outlined" type="number" />
             <TextField onChange={(event) => setWidth(Number(event.target.value))}
-                label="Width (cm)" variant="outlined" type="number" />
+                label="Width" variant="outlined" type="number" />
             <TextField onChange={(event) => setHeight(Number(event.target.value))}
-                label="Height (cm)" variant="outlined" type="number" />
+                label="Height" variant="outlined" type="number" />
         </Box>
     )
 }

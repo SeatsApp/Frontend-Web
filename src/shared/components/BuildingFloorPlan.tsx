@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import { Point } from '../../buildings/types/Point';
+import { Point } from '../../shared/types/Point';
 import { Seat as SeatObject } from '../../shared/types/Seat';
-import Seat from './Seat';
+import SeatSvg from './SeatSvg';
 
 interface BuildingFloorPlanProps {
     seats: SeatObject[];
@@ -42,9 +42,9 @@ export default function BuildingFloorPlan({ seats, floorPoints, newSeat }: Build
                         />
                     </g>
                     {seats.map((seat: SeatObject) => (
-                        <Seat key={seat.id} seat={seat} created={false} ></Seat>
+                        <SeatSvg key={seat.id} seat={seat} created={false} ></SeatSvg>
                     ))}
-                    <Seat seat={newSeat} created={true} ></Seat>
+                    <SeatSvg seat={newSeat} created={true} ></SeatSvg>
                 </svg>
             </Box>
         </Box>

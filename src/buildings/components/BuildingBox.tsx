@@ -1,8 +1,8 @@
 import {
     Box, Typography,
 } from "@mui/material";
-import { Building } from "../types/Building";
-import { Floor } from "../types/Floor";
+import { Building } from "../../shared/types/Building";
+import { Floor } from "../../shared/types/Floor";
 import FloorCard from "./FloorCard";
 
 interface BuildingBoxProps {

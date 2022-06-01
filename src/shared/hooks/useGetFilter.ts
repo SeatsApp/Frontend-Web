@@ -7,14 +7,14 @@ export default function useGetFilter<T>(url: string, initialValue: T) {
 
     const fetchData = useCallback(async (getUrl: string) => {
         await axiosClient(getUrl).then(
-            (response) => {
+            (response:any) => {
                 if (response.data !== undefined)
                     setFetchedData(response.data);
             }
         )
             .catch(() => {
                 /* istanbul ignore next */
-                toast.error("Could not get the seats.")
+                toast.error("Could not get the data.")
             });
     }, []);
 
