@@ -9,8 +9,8 @@ export default function useCreateSeat(floorId: number, name: string,
         data: JSON.stringify({
             floorId: floorId,
             name: name,
-            xCoordinates: xCoordinates,
-            yCoordinates: yCoordinates,
+            xcoordinates: xCoordinates,
+            ycoordinates: yCoordinates,
             width: width,
             height: height
         }),
