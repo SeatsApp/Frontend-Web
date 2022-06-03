@@ -39,7 +39,7 @@ export const Floorplan = () => {
                         setHeight={setHeight} />
                     <CreateSeatButton floorId={Number(floorId)} name={name}
                         xCoordinates={xCoordinates} yCoordinates={YCoordinates}
-                        width={width} height={height} />
+                        width={width} height={height} buildingSeats={building.seats}/>
                 </Card>
             </Box>
         )

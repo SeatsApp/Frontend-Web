@@ -14,7 +14,7 @@ export default function CreateSeatInputs({
     setXCoordinates,
     setYCoordinates,
     setWidth,
-    setHeight }: CreateSeatInputsProps) {
+    setHeight}: CreateSeatInputsProps) {
     return (
         <Box>
             <TextField onChange={(event) => setName(event.target.value)}

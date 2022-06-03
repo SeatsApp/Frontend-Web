@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
-import { fireEvent, render, } from "@testing-library/react";
-import { AxiosPromise } from 'axios';
+import {fireEvent, render,} from "@testing-library/react";
+import {AxiosPromise} from 'axios';
 import CreateSeatButton from '../../floorplan/components/CreateSeatButton';
 import AxiosClient from '../../utils/AxiosClient';
 import mocked = jest.mocked
@@ -14,8 +14,9 @@ jest.mock("../../utils/AxiosClient");
 
 test("Try create wrong seat", async () => {
     mocked(AxiosClient).mockResolvedValue(Promise.resolve() as unknown as AxiosPromise<void>);
-    
-    const view = render(<CreateSeatButton floorId={0} name={''} xCoordinates={0} yCoordinates={0} width={0} height={0} />);
+
+    const view = render(<CreateSeatButton floorId={0} name={''} xCoordinates={0} yCoordinates={0} width={0} height={0}
+                                          buildingSeats={[]}/>);
 
     fireEvent.click(view.getByText("Save seat"));
 
@@ -25,7 +26,8 @@ test("Try create wrong seat", async () => {
 test("Try create correct seat", async () => {
     mocked(AxiosClient).mockResolvedValue(Promise.resolve() as unknown as AxiosPromise<void>);
 
-    const view = render(<CreateSeatButton floorId={0} name={'A'} xCoordinates={0} yCoordinates={0} width={15} height={15} />);
+    const view = render(<CreateSeatButton floorId={0} name={'A'} xCoordinates={0} yCoordinates={0} width={15}
+                                          height={15} buildingSeats={[]}/>);
 
     fireEvent.click(view.getByText("Save seat"));
 
