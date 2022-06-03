@@ -16,7 +16,7 @@ export default function useBuildings() {
 
     function readSelectedBuilding(buildingId: number, floorId: number, retrieveImmediately: boolean = true) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const { data: selectedBuilding, refetchFilter: refetchFilterBuilding, loading } = useGet<SelectedBuilding>(
+        const { data: selectedBuilding, refetch, refetchFilter: refetchFilterBuilding, loading } = useGet<SelectedBuilding>(
             `/api/buildings/${buildingId}/floors/${floorId}`, {
             buildingId: 0,
             buildingName: "",
@@ -25,6 +25,10 @@ export default function useBuildings() {
             floorPoints: [],
             seats: []
         }, retrieveImmediately);
+
+        function refetchDefaultBuilding() {
+            refetch()
+        }
 
         function refetchBuilding(buildingIdRefetch: number, floorIdRefetch: number) {
             refetchFilterBuilding(`/api/buildings/${buildingIdRefetch}/floors/${floorIdRefetch}`)
@@ -36,6 +40,7 @@ export default function useBuildings() {
 
         return {
             selectedBuilding,
+            refetchDefaultBuilding,
             refetchBuilding,
             refetchBuildingByDate,
             loading

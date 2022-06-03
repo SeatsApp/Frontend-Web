@@ -1,15 +1,17 @@
 import { Box } from '@mui/material';
 import { Point } from '../../shared/types/Point';
-import { Seat as SeatObject } from '../../shared/types/Seat';
+import { Seat } from '../../shared/types/Seat';
 import SeatSvg from './SeatSvg';
 
 interface BuildingFloorPlanProps {
-    seats: SeatObject[];
+    seats: Seat[];
     floorPoints: Point[];
-    newSeat: SeatObject;
+    newSeat: Seat;
+    clickableSeat: boolean;
+    clickSeat: (seat: Seat) => void;
 }
 
-export default function BuildingFloorPlan({ seats, floorPoints, newSeat }: BuildingFloorPlanProps) {
+export default function BuildingFloorPlan({ seats, floorPoints, newSeat, clickableSeat, clickSeat }: BuildingFloorPlanProps) {
     let heightPoint = 0
     let widthPoint = 0
     let stringPoints = ""
@@ -41,10 +43,11 @@ export default function BuildingFloorPlan({ seats, floorPoints, newSeat }: Build
                             strokeWidth="15"
                         />
                     </g>
-                    {seats.map((seat: SeatObject) => (
-                        <SeatSvg key={seat.id} seat={seat} created={false} ></SeatSvg>
+                    {seats.map((seat: Seat) => (
+                        <SeatSvg key={seat.id} seat={seat} created={false} 
+                        clickable={clickableSeat} clickSeat={clickSeat} ></SeatSvg>
                     ))}
-                    <SeatSvg seat={newSeat} created={true} ></SeatSvg>
+                    <SeatSvg seat={newSeat} created={true} clickable={false} clickSeat={() => { console.error("This is not possible") }} ></SeatSvg>
                 </svg>
             </Box>
         </Box>
