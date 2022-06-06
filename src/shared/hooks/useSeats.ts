@@ -1,12 +1,12 @@
 import axiosClient from '../../utils/AxiosClient';
 import toast from 'react-hot-toast';
-import useGetFilter from './useGetFilter';
 import {Seat} from "../types/Seat";
+import useGet from './useGet';
 
 export default function useSeat() {
     function readSeatsFilter(value: string) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const { data: seats, refetch: refetchSeats } = useGetFilter<Seat[]>(value, []);
+        const { data: seats, refetchFilter: refetchSeats } = useGet<Seat[]>(value, []);
         return {
             seats,
             refetchSeats,

@@ -26,6 +26,7 @@ export default function CreateSeatButton({
         if (name === "" || width === 0 || height === 0) {
             toast.error("You need to fill in the name, width and height")
         } else {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
             useCreateSeat(floorId, name, xCoordinates, yCoordinates, width, height)
             buildingSeats.push({
                 id: buildingSeats.length,

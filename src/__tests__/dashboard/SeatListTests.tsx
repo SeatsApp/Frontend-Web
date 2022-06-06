@@ -1,12 +1,12 @@
 import React from "react";
-import { SeatStatus } from "../shared/types/SeatStatus";
+import { SeatStatus } from "../../shared/types/SeatStatus";
 import TestRenderer from "react-test-renderer";
-import SeatList from "../dashboard/components/SeatList";
+import SeatList from "../../dashboard/components/SeatList";
 import { render } from "@testing-library/react";
-import AxiosClient from "../utils/AxiosClient";
+import AxiosClient from "../../utils/AxiosClient";
 import { AxiosPromise } from "axios";
 import mocked = jest.mocked;
-import useSeat from "../shared/hooks/useSeats";
+import useSeat from "../../shared/hooks/useSeats";
 
 test('renders learn react link', () => {
     const tree = TestRenderer.create(<SeatList seats={[{
@@ -53,7 +53,7 @@ test('button click', () => {
     expect(mockedSetState).toHaveBeenCalledTimes(3);
 });
 
-jest.mock("../../src/utils/AxiosClient");
+jest.mock("../../../src/utils/AxiosClient");
 const { changeAvailability } = useSeat();
 
 test("Change availability calls right api", async () => {
