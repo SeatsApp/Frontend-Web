@@ -1,6 +1,6 @@
 import React from "react";
 import {render, screen} from "@testing-library/react";
-import DateFilter from "../dashboard/components/DateFilter";
+import SeatsFilter from "../../dashboard/components/SeatsFilter";
 
 beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation();
@@ -10,7 +10,8 @@ beforeEach(() => {
 test('filter by date with value not empty', () => {
     const mockedSetState = jest.fn();
 
-    render(<DateFilter filterByDate={mockedSetState} setStartDate={mockedSetState} startDate={null}/>)
+    render(<SeatsFilter filterSeats={mockedSetState} setStartDate={mockedSetState} startDate={null} 
+        buildingId={0} floorId={0} setBuildingId={jest.fn()} setFloorId={jest.fn()}/>)
     screen.getByText('Apply filter').click();
 
     expect(mockedSetState).toBeCalledTimes(1);

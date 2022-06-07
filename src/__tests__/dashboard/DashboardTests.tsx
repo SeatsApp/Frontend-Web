@@ -1,15 +1,10 @@
 import React from 'react';
 import TestRenderer, {act} from 'react-test-renderer';
-import Dashboard from "../dashboard/components/Dashboard";
-import AxiosClient from "../utils/AxiosClient";
+import Dashboard from "../../dashboard/components/Dashboard";
+import AxiosClient from "../../utils/AxiosClient";
 import {fireEvent, render} from "@testing-library/react";
 import mocked = jest.mocked;
 import {AxiosPromise} from "axios";
-
-beforeEach(() => {
-    jest.spyOn(console, 'warn').mockImplementation();
-    jest.spyOn(console, 'error').mockImplementation();
-});
 
 beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation();
@@ -21,7 +16,7 @@ test('renders dashboard', () => {
     expect(tree).toMatchSnapshot();
 });
 
-jest.mock("../../src/utils/AxiosClient");
+jest.mock("../../../src/utils/AxiosClient");
 
 test('click calls function with right date', async () => {
     mocked(AxiosClient).mockResolvedValue(Promise.resolve() as unknown as AxiosPromise<void>);

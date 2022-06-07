@@ -2,7 +2,7 @@ import { Box, Card } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SeatStatus } from "../../shared/types/SeatStatus";
-import useSelectedBuilding from "../hooks/useSelectedBuilding";
+import useBuildings from "../../shared/hooks/useBuildings";
 import BuildingFloorPlan from "../../shared/components/BuildingFloorPlan";
 import CreateSeatButton from "./CreateSeatButton";
 import CreateSeatInputs from "./CreateSeatInputs";
@@ -18,12 +18,13 @@ export const Floorplan = () => {
 
     if (buildingId !== undefined && floorId !== undefined) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const { building } = useSelectedBuilding(buildingId, floorId)
+        const { readSelectedBuilding } = useBuildings()
+        const { selectedBuilding } = readSelectedBuilding(Number(buildingId), Number(floorId))
 
         return (
             <Box style={{ paddingTop: 20, margin: 2 }}>
                 <Card>
-                    <BuildingFloorPlan seats={building.seats} floorPoints={building.floorPoints} newSeat={{
+                    <BuildingFloorPlan seats={selectedBuilding.seats} floorPoints={selectedBuilding.floorPoints} newSeat={{
                         id: 0,
                         name: name,
                         seatStatus: SeatStatus.AVAILABLE,
@@ -39,7 +40,7 @@ export const Floorplan = () => {
                         setHeight={setHeight} />
                     <CreateSeatButton floorId={Number(floorId)} name={name}
                         xCoordinates={xCoordinates} yCoordinates={YCoordinates}
-                        width={width} height={height} buildingSeats={building.seats}/>
+                        width={width} height={height} buildingSeats={selectedBuilding.seats} />
                 </Card>
             </Box>
         )

@@ -1,7 +1,7 @@
 import React from "react";
 import {render} from "@testing-library/react";
-import SeatDetailsModal from "../dashboard/components/SeatDetailsModal";
-import {SeatStatus} from "../shared/types/SeatStatus";
+import SeatDetailsModal from "../../dashboard/components/SeatDetailsModal";
+import {SeatStatus} from "../../shared/types/SeatStatus";
 
 test('getEvents', () => {
     const setOpenMocked = jest.fn();

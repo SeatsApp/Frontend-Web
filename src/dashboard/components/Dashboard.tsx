@@ -3,41 +3,64 @@ import {
     Card, Typography,
 } from "@mui/material";
 import useSeat from "../../shared/hooks/useSeats";
-import {useState} from "react";
+import { useEffect, useState } from "react";
 import OveralInfo from './overallinfo/OveralInfo'
 import SeatList from "./SeatList";
-import DateFilter from "./DateFilter";
+import SeatsFilter from "./SeatsFilter";
+import { Seat } from "../../shared/types/Seat";
+import useBuildings from "../../shared/hooks/useBuildings";
 
-function Dashboard() {
-    const {readSeatsFilter} = useSeat();
-    const {seats, refetchSeats} = readSeatsFilter('/api/seats');
+export default function Dashboard() {
+    const { readSeatsFilter } = useSeat();
+    const { seats: foundSeats, refetchSeats } = readSeatsFilter('/api/seats');
     const [startDate, setStartDate] = useState<string | null>(null);
+    const [seats, setSeats] = useState<Seat[]>([])
 
-    async function filterByDate() {
-        const value = document.getElementById('date')?.getAttribute('value');
-        let string = "/api/seats"
-        if (value === "") {
+    const [buildingId, setBuildingId] = useState<number>(0)
+    const [floorId, setFloorId] = useState<number>(0)
+    const { readSelectedBuilding } = useBuildings()
+
+    const { selectedBuilding, refetchBuilding, refetchBuildingByDate } = readSelectedBuilding(buildingId, floorId, false)
+
+    async function filterSeats() {
+        let date = document.getElementById('date')?.getAttribute('value');
+        let url = "/api/seats"
+        if (date === "") {
             setStartDate(null);
         } else {
-            const date = value?.split('/')[2] + "-" + value?.split('/')[1] + "-" + value?.split('/')[0];
-            string = `/api/seats/reservations/date/` + date;
+            date = date?.split('/')[2] + "-" + date?.split('/')[1] + "-" + date?.split('/')[0];
+            url = `/api/seats/reservations/date/` + date;
         }
-        await refetchSeats(string);
+
+        if (buildingId !== 0) {
+            if (date === "") {
+                refetchBuilding(buildingId, floorId)
+            } else {
+                refetchBuildingByDate(buildingId, floorId, date)
+            }
+        } else {
+            await refetchSeats(url);
+        }
     }
 
+    useEffect(() => {
+        setSeats(foundSeats)
+    }, [foundSeats])
+
+    useEffect(() => {
+        setSeats(selectedBuilding.seats)
+    }, [selectedBuilding])
+
     return (
-        <Box style={{paddingTop: 20}}>
-            <Card>
-                <Box sx={{paddingTop: 2, display: 'flex', justifyContent: 'space-around'}}>
-                    <Typography color={'secondary'} variant='h3'>Seats
-                        overview</Typography>
-                    <DateFilter  filterByDate={filterByDate} setStartDate={setStartDate} startDate={startDate}/>
-                </Box>
-                <OveralInfo seats={seats}/>
-                <SeatList filterByDate={filterByDate} seats={seats}/>
+        <Box style={{ paddingTop: 20, margin: 2 }}>
+            <Card style={{ padding: 20 }}>
+                <Typography color={'secondary'} variant='h3'>Seats overview</Typography>
+                <SeatsFilter filterSeats={filterSeats} setStartDate={setStartDate}
+                    startDate={startDate} buildingId={buildingId} floorId={floorId}
+                    setBuildingId={setBuildingId} setFloorId={setFloorId} />
+                <OveralInfo seats={seats} />
+                <SeatList filterByDate={filterSeats} seats={seats} />
             </Card>
         </Box>
     );
 }
-
-export default Dashboard;
