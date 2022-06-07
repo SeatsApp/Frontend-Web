@@ -52,7 +52,7 @@ export default function FloorAccordion({ floor, floorIndex, building, setBuildin
                     height: 0,
                     reservations: [],
                     available: false
-                }} />
+                }} clickableSeat={false} clickSeat={() => { console.error("This is not possible") }} />
                 <AddPointButton building={building} setBuilding={setBuilding}
                     floorIndex={floorIndex} />
                 <Box style={{ display: "flex", marginTop: 20 }}>

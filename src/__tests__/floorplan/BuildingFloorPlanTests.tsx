@@ -34,6 +34,6 @@ test("renders correctly", () => {
             height: 0,
             reservations: [],
             available: true
-        }} />).toJSON
+        }} clickableSeat={false} clickSeat={() => { console.error("This is not possible") }} />).toJSON
     expect(tree).toMatchSnapshot();
 });

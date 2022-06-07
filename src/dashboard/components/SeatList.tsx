@@ -15,6 +15,7 @@ import SeatDetailsModal from "./SeatDetailsModal";
 import {useState} from "react";
 import useSeat from "../../shared/hooks/useSeats";
 
+
 interface SeatListProps {
     seats: Seat[];
     filterByDate: () => void;
