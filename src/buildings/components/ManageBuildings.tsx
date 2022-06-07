@@ -16,17 +16,16 @@ export const ManageBuildings = () => {
     return (
         <Box style={{ paddingTop: 20, margin: 2 }}>
             <Card style={{ padding: 20 }}>
-                <Box style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Box style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                    <Typography color={'secondary'} variant='h3'>Buildings overview</Typography>
                     <Button
                         variant="contained"
                         color={'secondary'}
-
                         onClick={() => navigate("/buildings/0")}
                     >
                         Create building
                     </Button>
                 </Box>
-                <Typography color={'secondary'} variant='h3'>Buildings overview</Typography>
                 {buildings.map((building: Building) =>
                     <BuildingBox key={building.id} building={building} />
                 )}

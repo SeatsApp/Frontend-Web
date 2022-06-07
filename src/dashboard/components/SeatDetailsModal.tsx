@@ -32,6 +32,7 @@ export default function SeatDetailsModal({open, setOpen, seat}: SeatDetailsModal
         setOpen(false);
     }
 
+
     function getEvents() {
         let updatedEvents = [];
         if (seat !== undefined) {

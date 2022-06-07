@@ -1,5 +1,5 @@
 import {Toolbar, Typography, AppBar, Box, Link} from "@mui/material";
-import CronosLogo from "../assets/cronosLogo.png"
+import XploreLogo from "../assets/logo-color.png"
 import {useState} from "react";
 import RedirectButtons from "./RedirectButtons";
 
@@ -10,7 +10,7 @@ function Header() {
         <AppBar sx={{alignItems: 'center', background: '#fff'}}>
             <Toolbar sx={{width: '80%', justifyContent: 'space-between'}}>
                 <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <img src={CronosLogo} height={"100px"} alt={"Cronos"}/>
+                    <img src={XploreLogo} alt={"XploreLogo"}/>
                 </Box>
                 <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                     <RedirectButtons activeBtn={activeBtn} setActiveBtn={setActiveBtn} />
@@ -26,9 +26,8 @@ function Header() {
                         sx={activeBtn === "Logout" ? {
                             fontWeight: 'bold',
                             textDecoration: 'none',
-                            marginRight: 10,
                             marginLeft: 2
-                        } : {textDecoration: 'none', marginRight: 10, marginLeft: 2}}
+                        } : {textDecoration: 'none', marginLeft: 2}}
                     >
                         Logout
                     </Link>

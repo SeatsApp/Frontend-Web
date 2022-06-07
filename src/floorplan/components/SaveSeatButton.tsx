@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import {Button} from '@mui/material';
 import { toast } from "react-hot-toast";
 import useSeats from '../../shared/hooks/useSeats';
 import { Seat } from '../../shared/types/Seat';
@@ -55,8 +55,8 @@ export default function SaveSeatButton({
     }
 
     return (
-        <Button variant="contained" color={'secondary'}
-            onClick={createSeatClick}>
-            Save seat</Button>
+            <Button sx={{m:2}} variant="contained" color={'secondary'}
+                    onClick={createSeatClick}>
+                Save seat</Button>
     )
 }

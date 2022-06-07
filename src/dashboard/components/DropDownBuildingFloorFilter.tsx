@@ -1,8 +1,8 @@
-import { Building } from "../../shared/types/Building";
-import { Floor } from "../../shared/types/Floor";
+import {Building} from "../../shared/types/Building";
+import {Floor} from "../../shared/types/Floor";
 import useBuildings from '../../shared/hooks/useBuildings';
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { Dispatch, SetStateAction, useState } from "react";
+import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
+import {Dispatch, SetStateAction, useState} from "react";
 
 interface DropDownBuildingFloorListProps {
     buildingId: number,
@@ -11,10 +11,10 @@ interface DropDownBuildingFloorListProps {
     setFloorId: Dispatch<SetStateAction<number>>,
 }
 
-export default function DropDownBuildingFloorFilter({ buildingId, floorId, setBuildingId, setFloorId }
-    : DropDownBuildingFloorListProps) {
-    const { readAllBuildings } = useBuildings();
-    const { buildings, loading: loadingAllBuildings } = readAllBuildings()
+export default function DropDownBuildingFloorFilter({buildingId, floorId, setBuildingId, setFloorId}
+                                                        : DropDownBuildingFloorListProps) {
+    const {readAllBuildings} = useBuildings();
+    const {buildings, loading: loadingAllBuildings} = readAllBuildings()
 
     const [building, setBuilding] = useState<Building>()
 
@@ -32,8 +32,7 @@ export default function DropDownBuildingFloorFilter({ buildingId, floorId, setBu
             setBuilding(buildingWithId)
             setBuildingId(Number(newBuildingId))
             setFloorId(foundFloorId)
-        }
-        else {
+        } else {
             setBuilding(undefined)
             setBuildingId(0)
         }
@@ -49,37 +48,41 @@ export default function DropDownBuildingFloorFilter({ buildingId, floorId, setBu
     }
 
     return (
-        <Box>
-            <FormControl fullWidth sx={{ marginTop: 2 }}>
-                <InputLabel>Building name</InputLabel>
-                <Select
-                    value={buildingId}
-                    label="Building name"
-                    onChange={clickBuilding}
-                >
-                    <MenuItem value={0}>Everything</MenuItem>
-                    {
-                        buildings.map((buildingItem: Building) => (
-                            <MenuItem key={buildingItem.id} value={buildingItem.id}>{buildingItem.name}</MenuItem>
-                        ))
-                    }
-                </Select>
-            </FormControl>
-            {building !== undefined &&
-                <FormControl fullWidth sx={{ marginTop: 2 }}>
-                    <InputLabel>Floor name</InputLabel>
+        <Box sx={{display: 'flex', justifyContent: 'center', marginLeft: 2}}>
+            <Box sx={{marginRight: 2}}>
+                <FormControl fullWidth style={{width: 'fit-content'}}>
+                    <InputLabel>Building name</InputLabel>
                     <Select
-                        value={floorId}
-                        label="Floor name"
-                        onChange={clickFloor}
+                        value={buildingId}
+                        label="Building name"
+                        onChange={clickBuilding}
                     >
+                        <MenuItem value={0}>All Buildings</MenuItem>
                         {
-                            building.floors.map((floor: Floor) => (
-                                <MenuItem key={floor.id} value={floor.id}>{floor.name}</MenuItem>
+                            buildings.map((buildingItem: Building) => (
+                                <MenuItem key={buildingItem.id} value={buildingItem.id}>{buildingItem.name}</MenuItem>
                             ))
                         }
                     </Select>
                 </FormControl>
+            </Box>
+            {building !== undefined &&
+                <Box sx={{marginRight: 2}}>
+                    <FormControl fullWidth style={{width: 'max-content', marginRight: 2}}>
+                        <InputLabel>Floor name</InputLabel>
+                        <Select
+                            value={floorId}
+                            label="Floor name"
+                            onChange={clickFloor}
+                        >
+                            {
+                                building.floors.map((floor: Floor) => (
+                                    <MenuItem key={floor.id} value={floor.id}>{floor.name}</MenuItem>
+                                ))
+                            }
+                        </Select>
+                    </FormControl>
+                </Box>
             }
         </Box>
     );

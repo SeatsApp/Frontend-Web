@@ -1,17 +1,17 @@
-import { Alert, Box, Button, Card } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { SeatStatus } from "../../shared/types/SeatStatus";
+import {Alert, Box, Button, Card, TextField} from "@mui/material";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {SeatStatus} from "../../shared/types/SeatStatus";
 import useBuildings from "../../shared/hooks/useBuildings";
 import BuildingFloorPlan from "../../shared/components/BuildingFloorPlan";
 import SaveSeatButton from "./SaveSeatButton";
 import CreateSeatInputs from "./CreateSeatInputs";
-import { Seat } from "../../shared/types/Seat";
+import {Seat} from "../../shared/types/Seat";
 import DeleteSeatButton from "./DeleteSeatButton";
 
 
 export const Floorplan = () => {
-    const { buildingId, floorId } = useParams()
+    const {buildingId, floorId} = useParams()
     const [xCoordinates, setXCoordinates] = useState(0)
     const [YCoordinates, setYCoordinates] = useState(0)
     const [width, setWidth] = useState(0)
@@ -24,8 +24,8 @@ export const Floorplan = () => {
     const buildingIdParam = buildingId === undefined ? 0 : Number(buildingId)
     const floorIdParam = floorId === undefined ? 0 : Number(floorId)
 
-    const { readSelectedBuilding } = useBuildings()
-    const { selectedBuilding: building, refetchDefaultBuilding, loading } = readSelectedBuilding(
+    const {readSelectedBuilding} = useBuildings()
+    const {selectedBuilding: building, refetchDefaultBuilding, loading} = readSelectedBuilding(
         buildingIdParam, floorIdParam)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,7 +60,7 @@ export const Floorplan = () => {
     }, [filterSeats, loading])
 
     return (
-        <Box style={{ paddingTop: 20, margin: 2 }}>
+        <Box style={{paddingTop: 20, paddingBottom: 20, margin: 2}}>
             <Card>
                 <BuildingFloorPlan seats={building.seats} floorPoints={building.floorPoints} newSeat={{
                     id: 0,
@@ -72,28 +72,31 @@ export const Floorplan = () => {
                     height: height,
                     reservations: [],
                     available: true
-                }} clickSeat={handleClickSeat} clickableSeat={true} />
+                }} clickSeat={handleClickSeat} clickableSeat={true}/>
                 {seat !== undefined &&
                     <Alert severity="warning">You are editing a seat!</Alert>
                 }
-                <CreateSeatInputs setName={setName} name={name}
-                    setXCoordinates={setXCoordinates} xCoordinates={xCoordinates}
-                    setYCoordinates={setYCoordinates} yCoordinates={YCoordinates}
-                    setWidth={setWidth} width={width}
-                    setHeight={setHeight} height={height} />
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                    <SaveSeatButton floorId={Number(floorId)} name={name}
-                        xCoordinates={xCoordinates} yCoordinates={YCoordinates}
-                        width={width} height={height} seat={seat}
-                        refetchBuilding={refetchDefaultBuilding} />
+                <Box sx={{display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <TextField sx={{margin: 2}} value={name} onChange={(event) => setName(event.target.value)}
+                               label="Name" variant="outlined"/>
                     {seat !== undefined &&
                         <Box>
-                            <DeleteSeatButton seatId={seat.id} refetchBuilding={clearSeat} />
-                            <Button variant="contained" color={'secondary'}
-                                onClick={clearSeat}>
+                            <DeleteSeatButton seatId={seat.id} refetchBuilding={clearSeat}/>
+                            <Button variant="outlined" color={'secondary'}
+                                    onClick={clearSeat}>
                                 Clear seat</Button>
                         </Box>
                     }
+                </Box>
+                <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
+                    <CreateSeatInputs setXCoordinates={setXCoordinates} xCoordinates={xCoordinates}
+                                      setYCoordinates={setYCoordinates} yCoordinates={YCoordinates}
+                                      setWidth={setWidth} width={width}
+                                      setHeight={setHeight} height={height}/>
+                    <SaveSeatButton floorId={Number(floorId)} name={name}
+                                    xCoordinates={xCoordinates} yCoordinates={YCoordinates}
+                                    width={width} height={height} seat={seat}
+                                    refetchBuilding={refetchDefaultBuilding}/>
                 </Box>
             </Card>
         </Box>

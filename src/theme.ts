@@ -10,10 +10,16 @@ export const theme = createTheme({
             contrastText: '#525464',
         },
         secondary: {
-            main: "#04689a",
+            main: "#28303d",
             light: "#fff",
-            contrastText: '#fcf4d9',
+            contrastText: '#fff',
         },
+        error: {
+            main: "#e04457"
+        },
+        warning: {
+            main: "#ffc81f"
+        }
     },
     components: {
         MuiTableCell: {
