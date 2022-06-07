@@ -46,7 +46,7 @@ export default function CheckedInSeats({ seats }: CheckedInProps) {
                     <Grid item>
                         <Avatar
                             sx={{
-                                backgroundColor: 'secondary.main',
+                                backgroundColor: 'warning.main',
                                 height: 56,
                                 width: 56
                             }}

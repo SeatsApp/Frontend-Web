@@ -41,7 +41,7 @@ export default function AddFloorButton({ building, setBuilding }: AddFloorButton
 
     return (
         <Box style={{ marginTop: 10, marginBottom: 10 }}>
-            <Button variant="contained" color={'secondary'}
+            <Button variant="outlined" color={'secondary'}
                 onClick={addFloor}>
                 Add floor</Button>
         </Box>

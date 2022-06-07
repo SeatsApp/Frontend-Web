@@ -79,7 +79,7 @@ test('change building to everything', () => {
 
     const listbox = within(view.getByRole('listbox'));
 
-    fireEvent.click(listbox.getByText(/Everything/i));
+    fireEvent.click(listbox.getByText(/All buildings/i));
 
     expect(mockedBuildingId).toHaveBeenCalledTimes(1);
 });

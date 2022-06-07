@@ -22,8 +22,8 @@ export default function SeatsFilter({ startDate, setStartDate, buildingId,
 
 
     return (
-        <Box >
-            <Box>
+        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+            <Box sx={{display: 'flex'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns} locale={enLocale}>
                     <DatePicker label="Filter date" value={startDate} onChange={(value: string | null) => {
                         setStartDate(value);
